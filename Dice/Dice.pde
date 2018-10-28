@@ -17,8 +17,8 @@ int deadHealth;
 int SizeX, SizeY, stage;
 void setup() {
   Menu();
-  background(0);
-  //dice = new Die();
+  
+  
   size(800, 800);
 
   for (int i = 0; i < column; i++) {
@@ -33,24 +33,24 @@ void setup() {
     dice[b].roll();
     total = total += dice[b].toggleNum;
   }
- // println(total);
+ 
   total = 0;
-  // dice.roll();
-  //no loop means that draw is only called once
-  //OR if you ever call redraw()
-  //noLoop();
+  
+  
 }
 void Menu() {
+
   stage = 1;
-  //Start = loadImage("background.jpg");
-  //image(Start, 0,0, 500, 500);
+ 
 }
 void MenuStage() {
   if (stage == 1) {
     textAlign(CENTER);
     textSize(50);
+    fill(50);
     text("Dungeons And Dice", width/2, height/2);
     textSize(10);
+    fill(50);
     text("Press Left Mouse to Continue", width/2, height/2 + 50);
   }
 
@@ -60,17 +60,16 @@ void MenuStage() {
   }
 }
 void draw() {
-
+ 
   MenuStage();
 }
 void ProcessCommand() {
-  //ai.DisplayHealth();
-  //fill(66, 66, 66); 
+  
   for (int a = 0; a < dice.length; a++) {
     dice[a].CreateDice();
   }
   ai.CreateEnemy();
-  //your code here
+  
   String s = "Damage Dealt: " + newTotal;
   fill(50);
   textSize(32);
@@ -81,56 +80,47 @@ void mousePressed() {
   for (int b = 0; b < dice.length; b++) {
     dice[b].roll();
     total = total += dice[b].toggleNum;
-    //totalString = Integer.toString(total);
-    //print(dice[dice.length - 2].);
+    
   }
   newTotal = total;
-//  println(total);
 
-  //ai.DisplayEnemy();
 
-  ai.Roll();
+  
+
+  ai.Roll2();
   total = 0;
-  //dice.roll();
+  
 
 
-  //No real work for you to do here
-  //calling redraw will do the necessary work 
-  //to redraw your processing script
+ 
   redraw();
-  clear();
+ 
 }
 
 
-//Dice: Models a single 6 sided dice cube
-//Each instance should randomly assign itself a value from 1 to 6
+
 class Die {
   int xPos;
   int yPos;
   int sizeX = 50;
   int sizeY = 50;
   int toggleNum;
-  //variable declarations for your Die instances here
-
-  //constructor
+  
   Die(int x, int y) {
     xPos = x;
     yPos = y;
 
-    //variable initializations here
+   
   }
 
-  //Simulate a roll of a die
+  
   void roll() {
 
     toggleNum = (int)random(1, 7);
-    //your code here, 
-    //should randomly assign a value from 1 to 6
+   
   }
 
-  /*
-	  Use the randomly assigned roll value to draw the face of a die
-   	*/
+  
   void ShowNumbers() {
 
     switch(toggleNum) {
@@ -191,12 +181,7 @@ class Die {
 
     ShowNumbers();
   }
-  void show() {
-
-
-
-    //your code here
-  }
+  
 }
 
 class EnemyAi {
@@ -205,7 +190,7 @@ class EnemyAi {
   int health = (int)random(100, 500);
   EnemyAi() {
   }
-  void Roll() {
+  void Roll2() {
 
     if (changeEnemy == true) {
 
@@ -213,7 +198,7 @@ class EnemyAi {
     }
 
     if (changeEnemy == false) {
-      ai.health();
+      ai.healthmethod();
     }
   }
 
@@ -279,7 +264,7 @@ class EnemyAi {
 
       fill(255);
       triangle(170 + addXpos, 220, 198 + addXpos, 275, 226 + addXpos, 220);
-
+      
       text.ShowText("An Angry Cyclops Want Blood!!");
       changeEnemy = false;
 
@@ -312,53 +297,24 @@ class EnemyAi {
 
       changeEnemy = false;
       break;
-      /*
-    case 4: //chest
-       
-       stroke(0);
-       strokeWeight(2);
-       fill(28, 24, 0);
-       arc(125 + addXpos, 200, 250, 150, radians(0), radians(360));
-       fill(48, 42, 0);
-       rect(addXpos, 200, 250, 100);
-       fill(153, 131, 1);
-       rect(115 + addXpos, 200, 25, 30);
-       
-       text.ShowText("A Chest Has Appeared");
-       
-       // RandomXP = (int)random(10,50);
-       break;
-       */
+     
     }
   }
 
-  void health() {
+  void healthmethod() {
     NewHealth = health -= total;
 
-  //  println("New Health" + NewHealth);
+  
 
     if (health < 0) {
-     // print("dead");
+   
       changeEnemy = true;
       health = (int)random(100, 500);
       deadHealth = health;
       changeNum  = (int)random(1, 4);
     }
   }
-  /*
-  void DisplayHealth() {
-   deadHealth = NewHealth;
-   fill(50);
-   textSize(32);
-   if (health < 0) {
-   deadHealth = 0;
-   String start = "Ready?";
-   text(start, addXpos, 4);
-   }
-   String totalHealth = "Remaining Health: " + deadHealth;
-   text(totalHealth, addXpos, 500);
-   }
-   */
+ 
 }
 
 class TextManager {
