@@ -60,7 +60,7 @@ void MenuStage() {
   }
 }
 void draw() {
- 
+ background(255);
   MenuStage();
 }
 void ProcessCommand() {
@@ -73,7 +73,7 @@ void ProcessCommand() {
   String s = "Damage Dealt: " + newTotal;
   fill(50);
   textSize(32);
-  text(s, width/2 - 200, height - 100, 400, 400);
+  text(s, width/2 - 200, height - 100);
 }
 void mousePressed() {
   stage = 2;
@@ -325,6 +325,6 @@ class TextManager {
 
     fill(50);
     textSize(32);
-    text(s, width/2 - 200, height/1.3, 400, 400);
+    text(s, width/2 - 200, height/1.3);
   }
 }
