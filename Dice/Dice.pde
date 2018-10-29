@@ -12,7 +12,7 @@ int totalXP = 0;
 int newTotal;
 int NewHealth;
 int addXpos = 450;
-TextManager text = new TextManager();
+TextManager textt = new TextManager();
 int deadHealth;
 int SizeX, SizeY, stage;
 void setup() {
@@ -240,7 +240,7 @@ class EnemyAi {
       fill(255);
       rect(190 + addXpos, 220, 30, 40);
 
-      text.ShowText("An Ogre Has Appeared!!");
+      textt.ShowText("An Ogre Has Appeared!!");
       changeEnemy = false;
 
       break;
@@ -265,7 +265,7 @@ class EnemyAi {
       fill(255);
       triangle(170 + addXpos, 220, 198 + addXpos, 275, 226 + addXpos, 220);
       
-      text.ShowText("An Angry Cyclops Want Blood!!");
+      textt.ShowText("An Angry Cyclops Want Blood!!");
       changeEnemy = false;
 
       break;
@@ -293,7 +293,7 @@ class EnemyAi {
       triangle(190 + addXpos, 220, 218 + addXpos, 275, 246 + addXpos, 220);
       triangle(210 + addXpos, 220, 238 + addXpos, 275, 266 + addXpos, 220);
 
-      text.ShowText("A Cacodemon has Appeared");
+      textt.ShowText("A Cacodemon has Appeared");
 
       changeEnemy = false;
       break;
