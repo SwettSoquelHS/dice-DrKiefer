@@ -60,7 +60,7 @@ void MenuStage() {
   }
 }
 void draw() {
- background(255);
+ background(0);
   MenuStage();
 }
 void ProcessCommand() {
