@@ -322,9 +322,10 @@ class TextManager {
   }
 
   void ShowText(String s) {
-
+    
     fill(50);
     textSize(32);
+    textAlign(LEFT);
     text(s, width/2 - 200, height/1.3);
   }
 }
